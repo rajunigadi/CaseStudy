@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.DialogFragment
-import com.target.targetcasestudy.R
+import com.target.targetcasestudy.data.utils.validateCreditCard
+import com.target.targetcasestudy.databinding.DialogPaymentBinding
 
 /**
  * Dialog that displays a minimal credit card entry form.
@@ -23,26 +23,29 @@ import com.target.targetcasestudy.R
  */
 class PaymentDialogFragment : DialogFragment() {
 
-  private lateinit var submitButton: Button
-  private lateinit var creditCardInput: EditText
+    private var _binding: DialogPaymentBinding? = null
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View? {
-    val root = inflater.inflate(R.layout.dialog_payment, container, false)
+    // This property is only valid between onCreateView and onDestroyView.
+    private val binding get() = _binding!!
 
-    submitButton = root.findViewById(R.id.submit)
-    creditCardInput = root.findViewById(R.id.card_number)
-    val cancelButton: Button = root.findViewById(R.id.cancel)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = DialogPaymentBinding.inflate(inflater, container, false)
+        binding.cancel.setOnClickListener { dismiss() }
+        binding.submit.setOnClickListener { dismiss() }
 
-    cancelButton.setOnClickListener { dismiss() }
-    submitButton.setOnClickListener { dismiss() }
+        binding.cardNumber.doAfterTextChanged {
+            val isValidCard = validateCreditCard(it.toString())
+            binding.submit.isEnabled = isValidCard
+        }
+        return binding.root
+    }
 
-    // TODO enable the submit button based on card number validity using Validators.validateCreditCard()
-
-    return root
-  }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
