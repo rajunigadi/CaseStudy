@@ -11,7 +11,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/deal_list_item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
 
         <ImageView
             android:id="@+id/ivDealImage"
@@ -26,37 +28,36 @@
 
         <TextView
             android:id="@+id/tvName"
-            style="@style/TextAppearance.AppCompat.Headline"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="@{item.title}"
             android:textColor="@color/gray_color"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivDealImage"
-            app:layout_constraintTop_toTopOf="@+id/ivDealImage"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Junior's Boyfriend V Tee" />
 
         <View
             android:id="@+id/viewDivider"
             android:layout_width="0dp"
-            android:layout_height="1dp"
+            android:layout_height="1px"
             android:layout_marginTop="16dp"
             android:background="@color/gray_color"
-            app:layout_constraintEnd_toEndOf="@+id/tvName"
             app:layout_constraintStart_toStartOf="@+id/tvName"
             app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
         <TextView
             android:id="@+id/tvPrice"
-            style="@style/TextAppearance.AppCompat.Headline"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@{item.regularPrice.displayString}"
             android:textColor="@color/gray_color"
-            app:layout_constraintBottom_toBottomOf="@+id/ivDealImage"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/viewDivider"
             app:layout_constraintTop_toBottomOf="@+id/viewDivider"
             tools:text="$9.00" />
@@ -66,7 +67,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="C20"
+            tools:text="C20"
+            android:gravity="center"
+            android:background="@drawable/circle"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvPrice" />
@@ -77,7 +83,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="or"
+            tools:text="@string/or"
+            android:textColor="@color/gray_color"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/tvCount"
             app:layout_constraintEnd_toStartOf="@+id/tvCount"
             app:layout_constraintTop_toTopOf="@+id/tvCount" />
@@ -88,7 +96,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
-            android:text="ship"
+            tools:text="@string/ship"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/tvOr"
             app:layout_constraintEnd_toStartOf="@+id/tvOr"
             app:layout_constraintTop_toTopOf="@+id/tvOr" />

@@ -12,7 +12,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.target.targetcasestudy.data.repository.network.exceptions.ServerException
 import com.target.targetcasestudy.databinding.ActivityBaseBinding
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 abstract class BaseActivity : AppCompatActivity() {
@@ -21,9 +20,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBaseBinding.inflate(layoutInflater)
-        val view = binding?.root
-        setContentView(view)
+        init()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -41,6 +38,15 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         hideLoading()
+    }
+
+    private fun init() {
+        if (layoutResourceId != -1) {
+            binding = ActivityBaseBinding.inflate(layoutInflater)
+            val view = binding?.root
+            setContentView(view)
+            layoutInflater.inflate(layoutResourceId, binding?.flContainer)
+        }
     }
 
     fun displayToolbar(visible: Boolean = false) {

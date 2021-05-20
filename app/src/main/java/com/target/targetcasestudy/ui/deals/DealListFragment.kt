@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.target.targetcasestudy.common.ObservableData
 import com.target.targetcasestudy.data.repository.network.DealsResponse
 import com.target.targetcasestudy.databinding.FragmentDealListBinding
 import com.target.targetcasestudy.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class DealListFragment : BaseFragment() {
@@ -36,9 +37,13 @@ class DealListFragment : BaseFragment() {
     }
 
     override fun configureView() {
-        binding?.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding?.recyclerView.adapter = dealItemAdapter
-
+        binding?.recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
         viewModel
             .deals()
             .observeWithFragment(this, dealsObserver)
