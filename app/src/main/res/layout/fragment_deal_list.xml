@@ -8,6 +8,10 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:scrollbars="vertical"
+    android:layoutAnimation="@anim/layout_animation_fall_down"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:focusable="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     tools:listitem="@layout/deal_list_item" />

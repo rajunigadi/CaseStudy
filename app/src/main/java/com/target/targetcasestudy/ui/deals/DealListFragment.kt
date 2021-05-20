@@ -66,7 +66,10 @@ class DealListFragment : BaseFragment(), RecycleViewItemClickListener<Product> {
         if (it.hasError()) {
             handleApiError(it.error)
         } else if (it.hasData()) {
-            it.data?.products?.let { items -> dealItemAdapter.setItems(items) }
+            it.data?.products?.let {
+                items -> dealItemAdapter.setItems(items)
+                binding?.recyclerView.scheduleLayoutAnimation()
+            }
         }
     }
 
