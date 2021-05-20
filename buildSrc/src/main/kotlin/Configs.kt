@@ -7,9 +7,7 @@ object Repos {
 object BuildPlugins {
     const val APPLICATION                   = "com.android.application"
     const val ANDROID_LIBRARY               = "com.android.library"
-    const val JAVA_LIBRARY                  = "java-library"
     const val KOTLIN                        = "kotlin"
-    const val KOTLIN_JVM                    = "org.jetbrains.kotlin.jvm"
     const val GOOGLE_PLAY_SERVICES          = "com.google.gms.google-services"
     const val KOTLIN_ANDROID                = "kotlin-android"
     const val KOTLIN_PARCELIZE              = "kotlin-parcelize"
@@ -30,7 +28,7 @@ object AndroidSdk {
 }
 
 object Versions {
-    //private val versions                    = GitVersions.getVersion() // can be recieved versions from git branch
-    const val APP_VERSION_CODE                    = 1 //versions[0].toString().toInt()
-    const val APP_VERSION_NAME                    = "1.0" //versions[1].toString()
+    //private val versions                  = GitVersions.getVersion() // can be recieved versions from git branch
+    const val APP_VERSION_CODE              = 1 //versions[0].toString().toInt()
+    const val APP_VERSION_NAME              = "1.0" //versions[1].toString()
 }

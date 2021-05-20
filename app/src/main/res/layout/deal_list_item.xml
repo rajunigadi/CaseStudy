@@ -6,6 +6,9 @@
         <variable
             name="item"
             type="com.target.targetcasestudy.data.repository.network.Product" />
+        <variable
+            name="itemClickListener"
+            type="com.target.targetcasestudy.common.RecycleViewItemClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp">
+        android:paddingBottom="8dp"
+        android:onClick="@{() ->  itemClickListener.onClick(item)}">
 
         <ImageView
             android:id="@+id/ivDealImage"

@@ -19,6 +19,13 @@
         android:id="@+id/fragment_deal_item"
         android:name="com.target.targetcasestudy.ui.dealsitem.DealItemFragment"
         android:label="Deal Item"
-        tools:layout="@layout/fragment_deal_item" />
+        tools:layout="@layout/fragment_deal_item">
+
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+
+    </fragment>
 
 </navigation>

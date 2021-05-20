@@ -4,6 +4,7 @@ plugins {
     id(BuildPlugins.KOTLIN_KAPT)
     id(BuildPlugins.KOTLIN_PARCELIZE)
     id(BuildPlugins.DAGGER_HILT)
+    id(BuildPlugins.SAFE_ARGS)
 }
 
 android {

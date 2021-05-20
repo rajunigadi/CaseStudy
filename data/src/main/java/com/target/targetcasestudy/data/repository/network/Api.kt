@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 const val DEALS = "deals"
-const val DEALS_ITEM = "deals{id}"
+const val DEALS_ITEM = "deals/{id}"
 
 interface Api {
 
@@ -13,5 +13,5 @@ interface Api {
     fun deals(): Single<DealsResponse>
 
     @GET(DEALS_ITEM)
-    fun dealsItem(@Path("id") id: Int): Single<MutableList<Product>>
+    fun dealsItem(@Path("id") id: Int): Single<Product>
 }

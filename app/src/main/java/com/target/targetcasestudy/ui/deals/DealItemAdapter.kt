@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class DealItemAdapter @Inject constructor(val requestManager: RequestManager): BaseRecyclerViewAdapter<RecyclerView.ViewHolder>() {
 
-    private var itemClickListener: RecycleViewItemClickListener<Product>? = null
+    private var listener: RecycleViewItemClickListener<Product>? = null
     private var items: MutableList<Product> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -21,6 +21,9 @@ class DealItemAdapter @Inject constructor(val requestManager: RequestManager): B
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as ProductViewHolder).bind(items[position])
+        listener?.let {
+            holder.itemRowBinding.itemClickListener = it
+        }
     }
 
     override fun getItemCount(): Int = items.size
@@ -33,13 +36,9 @@ class DealItemAdapter @Inject constructor(val requestManager: RequestManager): B
         }
     }
 
-    fun getItems(): List<Product> {
-        return items
-    }
-
     fun setOnClickListener(itemClickListener: RecycleViewItemClickListener<Product>?) {
         itemClickListener?.let {
-            this.itemClickListener = it
+            this.listener = it
         }
     }
 

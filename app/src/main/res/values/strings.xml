@@ -16,4 +16,6 @@
     <string name="ship">ship</string>
 
     <string name="err_dialog_title">Something went Wrong</string>
+    <string name="add_to_list">add to list</string>
+    <string name="add_to_cart">add to cart</string>
 </resources>

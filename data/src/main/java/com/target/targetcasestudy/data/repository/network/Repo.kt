@@ -4,6 +4,5 @@ import io.reactivex.Single
 
 interface Repo {
     fun deals(): Single<DealsResponse>
-
-    fun dealsItem(id: Int): Single<MutableList<Product>>
+    fun dealsItem(id: Int): Single<Product>
 }
