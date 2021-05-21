@@ -1,8 +1,6 @@
 package com.target.targetcasestudy.ui.dealsitem
 
 import android.os.Bundle
-import android.text.Html
-import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.RequestManager
 import com.target.targetcasestudy.common.ObservableData
+import com.target.targetcasestudy.common.applyStrikeSpannableString
 import com.target.targetcasestudy.data.repository.network.Product
 import com.target.targetcasestudy.databinding.FragmentDealItemBinding
 import com.target.targetcasestudy.ui.base.BaseFragment
@@ -57,9 +56,8 @@ class DealItemFragment: BaseFragment() {
             handleApiError(it.error)
         } else if (it.hasData()) {
             Timber.d("length: ${it.data?.description?.length}")
-            binding?.item = it.data
+            binding.tvTittle.text = it.data?.title
             val description = it.data?.description
-
             if(description?.length!! > 5000) {
                 val newDescription = description.substring(0, 5000)
                 binding.tvDescription.text = newDescription
@@ -71,6 +69,16 @@ class DealItemFragment: BaseFragment() {
                     .load(imageUrl)
                     .override(200, 200)
                     .into(binding?.imageView)
+            }
+
+            if(it.data.salePrice != null) {
+                binding.tvPrice.text = it.data.salePrice.displayString
+                binding.tvReg.visibility = View.VISIBLE
+                binding.tvRegPrice.applyStrikeSpannableString(it.data.regularPrice.displayString)
+            } else {
+                binding.tvPrice.text = it.data.regularPrice.displayString
+                binding.tvReg.visibility = View.GONE
+                binding.tvRegPrice.visibility = View.GONE
             }
         }
     }

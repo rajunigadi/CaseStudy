@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="item"
             type="com.target.targetcasestudy.data.repository.network.Product" />
@@ -58,7 +59,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{item.regularPrice.displayString}"
+            android:text="@{(item.salePrice != null) ? item.salePrice.displayString : item.regularPrice.displayString}"
             android:textColor="@color/gray_color"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +68,7 @@
             tools:text="$9.00" />
 
         <TextView
-            android:id="@+id/tvCount"
+            android:id="@+id/tvAisle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -76,7 +77,8 @@
             android:background="@drawable/circle"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
-            android:visibility="gone"
+            android:visibility="@{item.aisle != null ? View.VISIBLE: View.GONE}"
+            android:text="@{item.aisle}"
             app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvPrice" />
@@ -87,12 +89,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            tools:text="@string/or"
-            android:textColor="@color/gray_color"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/tvCount"
-            app:layout_constraintEnd_toStartOf="@+id/tvCount"
-            app:layout_constraintTop_toTopOf="@+id/tvCount" />
+            android:text="@string/or"
+            android:textColor="@color/light_gray_color"
+            android:visibility="@{item.aisle != null ? View.VISIBLE: View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAisle"
+            app:layout_constraintEnd_toStartOf="@+id/tvAisle"
+            app:layout_constraintTop_toTopOf="@+id/tvAisle" />
 
         <TextView
             android:id="@+id/tvShip"
@@ -100,8 +102,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
-            tools:text="@string/ship"
-            android:visibility="gone"
+            android:text="@string/ship"
+            android:visibility="@{item.aisle != null ? View.VISIBLE: View.GONE}"
             app:layout_constraintBottom_toBottomOf="@+id/tvOr"
             app:layout_constraintEnd_toStartOf="@+id/tvOr"
             app:layout_constraintTop_toTopOf="@+id/tvOr" />

@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="item"
-            type="com.target.targetcasestudy.data.repository.network.Product" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clContent"
         android:layout_width="match_parent"
@@ -22,7 +15,6 @@
             android:layout_height="200dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
-            android:src="@drawable/ic_launcher_background"
             app:layout_constraintBottom_toTopOf="@+id/tvPrice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,13 +26,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginBottom="16dp"
-            android:text="@{item.regularPrice.displayString}"
             android:textColor="@color/colorPrimary"
-            android:textSize="26sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/tvTittle"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="$8.00" />
+
+        <TextView
+            android:id="@+id/tvReg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reg: "
+            android:textColor="@color/gray_color"
+            android:textSize="24sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/tvRegPrice"
+            app:layout_constraintEnd_toStartOf="@+id/tvRegPrice"
+            app:layout_constraintTop_toTopOf="@+id/tvRegPrice" />
 
         <TextView
             android:id="@+id/tvRegPrice"
@@ -48,12 +51,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="16dp"
-            android:text="@{item.regularPrice.displayString}"
             android:textColor="@color/gray_color"
-            android:textSize="26sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/tvTittle"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Reg: $20.00" />
+            tools:text="$20.00" />
 
         <TextView
             android:id="@+id/tvTittle"
@@ -62,7 +64,6 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="16dp"
-            android:text="@{item.title}"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/tvDescription"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,8 +77,7 @@
             android:layout_marginBottom="16dp"
             android:ellipsize="end"
             android:maxLines="6"
-            android:textColor="@color/gray_color"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tvAddToList"
             app:layout_constraintEnd_toEndOf="@+id/tvTittle"
             app:layout_constraintStart_toStartOf="@+id/tvTittle"
@@ -111,5 +111,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/tvAddToList" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
