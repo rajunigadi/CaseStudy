@@ -47,23 +47,17 @@ android {
 dependencies {
     implementation(Libs.KOTLIN_STD_LIB)
 
-    implementation(Libs.DAGGER_HILT)
-    kapt(Libs.DAGGER_HILT_COMPILER)
-
     implementation(Libs.RX_ANDROID) {
         exclude(group = "io.reactivex", module = "rxjava")
     }
     implementation(Libs.RETROFIT)
-    implementation(Libs.OKHTTP_LOG)
-
+    implementation(Libs.GSON_CONVERTER)
     implementation(Libs.RETROFIT_RXJAVA_ADAPTER) {
         exclude(group = "io.reactivex", module = "rxjava")
         exclude(group = "com.squareup.retrofit2", module = "retrofit")
     }
 
     implementation(Libs.TIMBER)
-
-    implementation(Libs.GSON_CONVERTER)
 
     testImplementation(Libs.JUNIT)
 }

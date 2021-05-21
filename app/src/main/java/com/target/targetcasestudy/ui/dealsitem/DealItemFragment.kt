@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.RequestManager
+import com.target.targetcasestudy.R
 import com.target.targetcasestudy.common.ObservableData
 import com.target.targetcasestudy.common.applyStrikeSpannableString
 import com.target.targetcasestudy.data.repository.network.Product
@@ -41,6 +42,12 @@ class DealItemFragment: BaseFragment() {
     }
 
     override fun configureView() {
+        binding.tvAddToList.setOnClickListener {
+            showSnackBar(binding.clContent, getString(R.string.feature_under_development))
+        }
+        binding.tvAddToCart.setOnClickListener {
+            showSnackBar(binding.clContent, getString(R.string.feature_under_development))
+        }
         viewModel
             .dealItem(args.id)
             .observeWithFragment(this, dealsItemObserver)

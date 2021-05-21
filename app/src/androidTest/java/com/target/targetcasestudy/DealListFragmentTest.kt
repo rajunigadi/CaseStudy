@@ -50,10 +50,10 @@ class DealListFragmentTest {
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java, true, false)
 
-    private var mockServer: MockWebServer? = null
-
     @Inject
     lateinit var okHttp: OkHttpClient
+
+    private var mockServer: MockWebServer? = null
 
     @Before
     fun setUp() {

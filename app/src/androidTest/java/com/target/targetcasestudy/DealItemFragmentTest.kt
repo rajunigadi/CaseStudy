@@ -5,6 +5,7 @@ import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -64,11 +65,65 @@ class DealItemFragmentTest {
     }
 
     @Test
-    fun dealListScreenTest() {
+    fun testDealDetailWithoutDiscount() {
         launchFragment<DealItemFragment>(navController, R.navigation.navigation_home, R.id.fragment_deal_item, bundleOf("id" to 0))
         val response = MockResponse()
             .setResponseCode(HttpURLConnection.HTTP_OK)
-            .setBody(MockResponseFileReader("deal_item_success_response.json").content)
+            .setBody(MockResponseFileReader("deal_item_success_response_one.json").content)
+        mockServer?.enqueue(response)
+
+        onView(withId(R.id.imageView)).run {
+            check(matches(isDisplayed()))
+        }
+
+        onView(withId(R.id.tvPrice)).run {
+            check(matches(isDisplayed()))
+        }
+
+        onView(withId(R.id.tvTittle)).run {
+            check(matches(isDisplayed()))
+        }
+
+        onView(withId(R.id.tvDescription)).run {
+            check(matches(isDisplayed()))
+        }
+
+        onView(withId(R.id.tvAddToList)).run {
+            check(matches(isDisplayed()))
+        }
+
+        onView(withId(R.id.tvAddToCart)).run {
+            check(matches(isDisplayed()))
+        }
+
+        // verify text of the view
+        onView(withId(R.id.tvTittle)).run {
+            check(matches(withText("non mollit veniam ex")))
+        }
+        onView(withId(R.id.tvPrice)).run {
+            check(matches(withText("\$184.06")))
+        }
+        onView(withId(R.id.tvDescription)).run {
+            check(matches(withSubstring("minim ad et minim ipsum duis irure pariatur")))
+        }
+
+        onView(withId(R.id.tvAddToList)).perform(ViewActions.click())
+
+        onView(withId(com.google.android.material.R.id.snackbar_text))
+            .check(matches(withText(R.string.feature_under_development)))
+
+        onView(withId(R.id.tvAddToCart)).perform(ViewActions.click())
+
+        onView(withId(com.google.android.material.R.id.snackbar_text))
+            .check(matches(withText(R.string.feature_under_development)))
+    }
+
+    @Test
+    fun testDealDetailWithDiscount() {
+        launchFragment<DealItemFragment>(navController, R.navigation.navigation_home, R.id.fragment_deal_item, bundleOf("id" to 1))
+        val response = MockResponse()
+            .setResponseCode(HttpURLConnection.HTTP_OK)
+            .setBody(MockResponseFileReader("deal_item_success_response_two.json").content)
         mockServer?.enqueue(response)
 
         onView(withId(R.id.imageView)).run {
@@ -101,13 +156,26 @@ class DealItemFragmentTest {
 
         // verify text of the view
         onView(withId(R.id.tvTittle)).run {
-            check(matches(withText("non mollit veniam ex")))
+            check(matches(withText("sint aliqua mollit duis ullamco")))
         }
         onView(withId(R.id.tvPrice)).run {
-            check(matches(withText("\$184.06")))
+            check(matches(withText("\$7.34")))
+        }
+        onView(withId(R.id.tvRegPrice)).run {
+            check(matches(withText("\$40.25")))
         }
         onView(withId(R.id.tvDescription)).run {
-            check(matches(withSubstring("minim ad et minim ipsum duis irure pariatur")))
+            check(matches(withSubstring("ad laboris do ad id ipsum dolore ad magna occaecat ea eu ex nisi culpa amet id")))
         }
+
+        onView(withId(R.id.tvAddToList)).perform(ViewActions.click())
+
+        onView(withId(com.google.android.material.R.id.snackbar_text))
+            .check(matches(withText(R.string.feature_under_development)))
+
+        onView(withId(R.id.tvAddToCart)).perform(ViewActions.click())
+
+        onView(withId(com.google.android.material.R.id.snackbar_text))
+            .check(matches(withText(R.string.feature_under_development)))
     }
 }

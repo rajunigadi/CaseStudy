@@ -18,4 +18,6 @@
     <string name="err_dialog_title">Something went Wrong</string>
     <string name="add_to_list">add to list</string>
     <string name="add_to_cart">add to cart</string>
+
+    <string name="feature_under_development">Feature is under development</string>
 </resources>

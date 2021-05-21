@@ -53,6 +53,8 @@ object Libs {
 
     const val TIMBER = "com.jakewharton.timber:timber:4.7.1"
 
+    const val OBJENESIS = "org.objenesis:objenesis:2.6"
+
     // testing
     const val JUNIT = "junit:junit:4.12"
     const val TEST_CORE = "androidx.test:core:1.0.0"

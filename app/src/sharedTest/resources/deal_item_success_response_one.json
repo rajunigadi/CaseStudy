@@ -1,0 +1,12 @@
+{
+  "id": 0,
+  "title": "non mollit veniam ex",
+  "aisle": "b2",
+  "description": "minim ad et minim ipsum duis irure pariatur deserunt eu cillum anim ipsum velit tempor eu pariatur sunt mollit tempor ut tempor exercitation occaecat ad et veniam et excepteur velit esse eu et ut ipsum consectetur aliquip do quis voluptate cupidatat eu ut consequat adipisicing occaecat adipisicing proident laborum laboris deserunt in laborum est anim ad non",
+  "image_url": "https://picsum.photos/id/0/300/300",
+  "regular_price": {
+    "amount_in_cents": 18406,
+    "currency_symbol": "$",
+    "display_string": "$184.06"
+  }
+}

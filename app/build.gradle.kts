@@ -10,6 +10,7 @@ plugins {
 configurations.all {
     resolutionStrategy {
         force(Libs.OKHTTP)
+        force(Libs.OBJENESIS) // Failed to process: /Users/rajashekhar/.gradle/caches/transforms-2/files-2.1/6860a39e2930813f8da314c0345bd911/jetified-objenesis-3.0.1.jar
     }
 }
 
