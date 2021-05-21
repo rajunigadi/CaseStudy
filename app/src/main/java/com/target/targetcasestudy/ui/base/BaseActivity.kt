@@ -13,7 +13,6 @@ import com.target.targetcasestudy.data.repository.network.exceptions.ServerExcep
 import com.target.targetcasestudy.databinding.ActivityBaseBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 abstract class BaseActivity : AppCompatActivity() {
 
     private var binding: ActivityBaseBinding? = null

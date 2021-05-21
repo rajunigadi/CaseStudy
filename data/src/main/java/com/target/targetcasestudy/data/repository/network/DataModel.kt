@@ -18,10 +18,11 @@ data class Product(
     val aisle: String,
     val description: String,
     @SerializedName("image_url") val imageUrl: String?,
-    @SerializedName("regular_price") val regularPrice: RegularPrice
+    @SerializedName("regular_price") val regularPrice: Price,
+    @SerializedName("sale_price") val salePrice: Price
 )
 
-data class RegularPrice(
+data class Price(
     @SerializedName("amount_in_cents") val amountInCents: Int,
     @SerializedName("currency_symbol") val currencySymbol: String,
     @SerializedName("display_string") val displayString: String

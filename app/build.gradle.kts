@@ -7,6 +7,12 @@ plugins {
     id(BuildPlugins.SAFE_ARGS)
 }
 
+configurations.all {
+    resolutionStrategy {
+        force(Libs.OKHTTP)
+    }
+}
+
 android {
 
     compileOptions {
@@ -59,6 +65,19 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+    }
+
+    sourceSets {
+        val sharedTestDir = "src/sharedTest/java"
+        val sharedTestResDir = "src/sharedTest/resources"
+        getByName("test") {
+            java.srcDirs(sharedTestDir)
+            resources.srcDirs(sharedTestResDir)
+        }
+        getByName("androidTest") {
+            java.srcDirs(sharedTestDir)
+            resources.srcDirs(sharedTestResDir)
+        }
     }
 }
 
@@ -114,17 +133,37 @@ dependencies {
 
     implementation(Libs.TIMBER)
 
-    testImplementation(Libs.JUNIT)
-    testImplementation(Libs.MOCKITO)
 
-    androidTestImplementation(Libs.MOCKITO)
-    androidTestImplementation(Libs.ESPRESSO_CORE)
-    androidTestImplementation(Libs.ESPRESSO_CONTRIB) {
-        exclude(group = "androidx.appcompat", module = "appcompat")
-        exclude(group = "androidx.legacy", module = "legacy-support-v4")
-        exclude(group = "com.android.support", module = "design")
-        exclude(module = "recyclerview")
-    }
+    // debug for testing
+    debugImplementation(Libs.FRAGMENT_TESTING)
+
+    // local testing
+    testImplementation(Libs.JUNIT)
+
+    testImplementation(Libs.TEST_DAGGER_HILT)
+    kaptTest(Libs.TEST_DAGGER_HILT_COMPILER)
+    testImplementation(Libs.MOCK_ANDROID)
+    testImplementation(Libs.MOCK_WEB_SERVER)
+
+
+    // instrumentation testing
+    androidTestImplementation(Libs.TEST_EXT_JUNIT)
+    androidTestImplementation(Libs.TEST_EXT_TRUTH)
+    androidTestImplementation(Libs.TEST_GOOGLE_TRUTH)
+
     androidTestImplementation(Libs.TEST_RUNNER)
     androidTestImplementation(Libs.TEST_RULES)
+
+    androidTestImplementation(Libs.ESPRESSO_CORE)
+    androidTestImplementation(Libs.ESPRESSO_CONTRIB)
+
+    androidTestImplementation(Libs.TEST_DAGGER_HILT)
+    kaptAndroidTest(Libs.TEST_DAGGER_HILT_COMPILER)
+    androidTestImplementation(Libs.MOCK_ANDROID)
+    androidTestImplementation(Libs.MOCK_WEB_SERVER)
+
+    androidTestImplementation(Libs.NAVIGATION_TESTING)
+
+    androidTestImplementation(Libs.RX_IDLER)
+    androidTestImplementation(Libs.OKHTTP_IDLING_RESOURCE)
 }

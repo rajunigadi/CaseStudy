@@ -67,7 +67,7 @@ class RxErrorHandlingCallAdapterFactory private constructor() : CallAdapter.Fact
             if (throwable is HttpException) {
                 val response = throwable.response()
                 return ServerException.httpError(
-                    response.raw().request().url().toString(),
+                    response.raw().request.url.toString(),
                     response, retrofit
                 )
             }

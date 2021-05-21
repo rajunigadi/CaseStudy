@@ -5,6 +5,12 @@ plugins {
     id(BuildPlugins.KOTLIN_PARCELIZE)
 }
 
+configurations.all {
+    resolutionStrategy {
+        force(Libs.OKHTTP)
+    }
+}
+
 android {
     compileSdkVersion(AndroidSdk.TARGET)
 
@@ -60,5 +66,4 @@ dependencies {
     implementation(Libs.GSON_CONVERTER)
 
     testImplementation(Libs.JUNIT)
-    testImplementation(Libs.MOCKITO)
 }

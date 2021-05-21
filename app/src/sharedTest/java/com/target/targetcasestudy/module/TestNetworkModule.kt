@@ -1,4 +1,4 @@
-package com.target.targetcasestudy.di.module
+package com.target.targetcasestudy.module
 
 import com.target.targetcasestudy.BuildConfig
 import com.target.targetcasestudy.data.repository.network.Api
@@ -14,9 +14,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-@Module(includes = [BaseUrlModule::class])
+@Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+class TestNetworkModule {
 
     @Provides
     @Singleton

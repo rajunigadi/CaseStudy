@@ -16,9 +16,7 @@ object BuildPlugins {
     const val DAGGER_HILT                   = "dagger.hilt.android.plugin"
 
     const val APPLICATION_ID                = "com.target.targetcasestudy"
-    const val TEST_APPLICATION_ID           = "com.target.targetcasestudy.lithium.test"
-
-    const val TEST_INSTRUMENTATION_RUNNER   = "com.target.targetcasestudy.lithium.app.util.MockTestRunner"
+    const val TEST_INSTRUMENTATION_RUNNER   = "com.target.targetcasestudy.TargetRunner"
 }
 
 object AndroidSdk {
