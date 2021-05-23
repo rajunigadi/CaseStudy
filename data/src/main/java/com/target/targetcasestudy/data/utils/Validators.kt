@@ -33,7 +33,7 @@ fun validateCreditCard(creditCardNumber: String): Boolean {
     cardNumber = reverseString(cardNumber) // reverse the number
     var sum = 0
     for (index in cardNumber.indices) {
-        var num = cardNumber[index].toInt()
+        var num = cardNumber[index].toString().toInt()
         if (index % 2 == 0) { // check if num position is odd
             num *= 2 // multiply by 2 if i is in odd position
             if (num > 9) { // check if num is greater than 9

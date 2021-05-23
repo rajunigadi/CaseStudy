@@ -6,16 +6,13 @@ object Libs {
     const val CORE_KTX = "androidx.core:core-ktx:1.3.2"
     const val DESIGN = "com.google.android.material:material:1.2.1"
 
-    const val ANNOTATION = "androidx.annotation:annotation:1.1.0"
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:1.1.0"
-    const val CARD_VIEW = "androidx.cardview:cardview:1.0.0"
-    const val PERCENT_LAYOUT = "androidx.percentlayout:percentlayout:1.0.0"
-    const val SUPPORT_V4 = "androidx.legacy:legacy-support-v4:1.0.0"
+    //const val CARD_VIEW = "androidx.cardview:cardview:1.0.0"
+    //const val SUPPORT_V4 = "androidx.legacy:legacy-support-v4:1.0.0"
     const val APPCOMPAT = "androidx.appcompat:appcompat:1.2.0"
-    const val SUPPORT_V13 = "androidx.legacy:legacy-support-v13:1.0.0"
     const val VECTOR_DRAWABLE = "androidx.vectordrawable:vectordrawable:1.1.0"
-    const val PREFERENCE = "androidx.preference:preference:1.1.1"
-    const val PREFERENCE_V14 = "androidx.legacy:legacy-preference-v14:1.0.0"
+    //const val PREFERENCE = "androidx.preference:preference:1.1.1"
+    //const val PREFERENCE_V14 = "androidx.legacy:legacy-preference-v14:1.0.0"
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.0.4"
     const val MULTIDEX = "androidx.multidex:multidex:2.0.1"
 
@@ -48,7 +45,6 @@ object Libs {
     const val OKHTTP = "com.squareup.okhttp3:okhttp:4.6.0"
 
     // rxjava
-    const val RX_JAVA = "io.reactivex.rxjava2:rxjava:2.2.8"
     const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:2.1.1"
 
     const val TIMBER = "com.jakewharton.timber:timber:4.7.1"
@@ -72,14 +68,6 @@ object Libs {
     // Espresso dependencies
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:3.1.0"
     const val ESPRESSO_CONTRIB = "androidx.test.espresso:espresso-contrib:3.1.0"
-    const val ESPRESSO_INTENTS = "androidx.test.espresso:espresso-intents:3.1.0"
-    const val ESPRESSO_IDLING_CONCURRENT = "androidx.test.espresso.idling:idling-concurrent:3.1.0"
-
-    // The following Espresso dependency can be either "implementation"
-    // or "androidTestImplementation", depending on whether you want the
-    // dependency to appear on your APK's compile classpath or the test APK
-    // classpath.
-    const val ESPRESSO_IDLING_RESOURCE = "androidx.test.espresso:espresso-idling-resource:3.1.0"
 
     const val TEST_DAGGER_HILT = "com.google.dagger:hilt-android-testing:2.35"
     const val TEST_DAGGER_HILT_COMPILER = "com.google.dagger:hilt-android-compiler:2.35"

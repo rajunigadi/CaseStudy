@@ -49,3 +49,29 @@ Some guidelines:
   this project during the review. Having tests is one way to kickstart that discussion and showcase
   your approach.
 - Be sure the app looks great on a variety of screen sizes!
+
+
+
+
+Developer Comments:
+
+MVVM architecture:
+    Pros:
+    * MVVM gives benefits like Lifecycle Management & one to many relationships with View & ViewModels.
+    * Binding operators can be used to write all the XML-attributes.
+    * Review at the compilation stage.
+    * Generate individual components to improve the testing process.
+
+    Cons:
+    * We can operate the View using two methods, i.e., DataBinding and View methods.
+    * Debugging would be bit difficult when we have complex data bindings.
+
+
+Tech Stacks used:
+    * Kotlin
+    * Dagger HILT
+    * Retrofit (OkHttp)
+    * RxAndroid
+    * Glide
+    * Jetpack Components (Navigation Component, ViewModel, LiveData, DataBinding & ViewBinding)
+    * Timber

@@ -54,7 +54,6 @@ android {
             isMinifyEnabled = true
             proguardFiles("proguard-rules.pro")
             proguardFiles("proguard-library.pro")
-            signingConfig = signingConfigs.findByName("release")
             isTestCoverageEnabled = false
         }
     }
@@ -95,14 +94,8 @@ dependencies {
         exclude(group = "androidx.recyclerview:recyclerview", module = "recyclerview")
     }
     implementation(Libs.APPCOMPAT)
-    implementation(Libs.SUPPORT_V4)
     implementation(Libs.RECYCLER_VIEW)
-    implementation(Libs.CARD_VIEW) {
-        exclude(group = "androidx.annotation", module = "annotation")
-    }
     implementation(Libs.VECTOR_DRAWABLE)
-    implementation(Libs.PREFERENCE)
-    implementation(Libs.PREFERENCE_V14)
     implementation(Libs.CONSTRAINT_LAYOUT)
     implementation(Libs.MULTIDEX)
 
@@ -113,8 +106,8 @@ dependencies {
     implementation(Libs.NAVIGATION)
     implementation(Libs.NAVIGATION_UI)
 
-    implementation(Libs.RX_DATA_BINDINGS)
-    implementation(Libs.RX_KOTLIN)
+    //implementation(Libs.RX_DATA_BINDINGS)
+    //implementation(Libs.RX_KOTLIN)
 
     implementation(Libs.RX_ANDROID) {
         exclude(group = "io.reactivex", module = "rxjava")
@@ -133,7 +126,6 @@ dependencies {
     kapt(Libs.GLIDE_COMPILER)
 
     implementation(Libs.TIMBER)
-
 
     // debug for testing
     debugImplementation(Libs.FRAGMENT_TESTING)
