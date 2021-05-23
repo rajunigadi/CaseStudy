@@ -82,8 +82,6 @@ android {
 }
 
 dependencies {
-    compileOnly(Libs.JAVAX_ANNOTATION)
-
     implementation(project(":data"))
 
     implementation(Libs.KOTLIN_STD_LIB)
@@ -105,9 +103,6 @@ dependencies {
 
     implementation(Libs.NAVIGATION)
     implementation(Libs.NAVIGATION_UI)
-
-    //implementation(Libs.RX_DATA_BINDINGS)
-    //implementation(Libs.RX_KOTLIN)
 
     implementation(Libs.RX_ANDROID) {
         exclude(group = "io.reactivex", module = "rxjava")
